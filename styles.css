@@ -478,15 +478,28 @@ svg {
   outline-offset: 2px;
 }
 
-.lang-switch-mobile {
+.topbar .lang-switch {
   display: none;
-  margin-top: 14px;
+  border-color: rgba(255, 255, 255, 0.28);
 }
 
-.lang-switch-mobile .lang-option {
-  flex: 1;
-  min-height: 44px;
-  font-size: 0.72rem;
+.topbar .lang-option {
+  min-height: 24px;
+  padding: 0 6px;
+  color: rgba(255, 255, 255, 0.78);
+  border-left-color: rgba(255, 255, 255, 0.28);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+}
+
+.topbar .lang-option:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.topbar .lang-option.active {
+  color: #071827;
+  background: #ffffff;
 }
 
 .menu-toggle {
@@ -2989,16 +3002,17 @@ svg {
     display: flex;
   }
 
-  .lang-switch-mobile {
-    display: flex;
-  }
-
   .topbar p {
     display: none;
   }
 
   .topbar-inner {
-    justify-content: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .topbar .lang-switch {
+    display: flex;
   }
 
   .hero-layout {
