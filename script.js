@@ -1440,10 +1440,12 @@ const translations = {
 };
 
 const LANGUAGE_STORAGE_KEY = "ananyaLanguage";
+const SUPPORTED_LANGUAGES = ["en", "hi", "hinglish"];
+const DEFAULT_LANGUAGE = "hi";
 const TRANSLATABLE_ATTRIBUTES = ["placeholder", "aria-label", "title", "alt"];
 const TRANSLATION_SKIP_SELECTOR = ".svg-sprite, .lang-option, [data-no-translate], [data-year]";
 
-let currentLanguage = "en";
+let currentLanguage = DEFAULT_LANGUAGE;
 
 const translate = (value) => {
   const table = translations[currentLanguage];
@@ -1501,7 +1503,7 @@ const applyLanguage = () => {
 };
 
 const setLanguage = (language, persist = true) => {
-  currentLanguage = translations[language] ? language : "en";
+  currentLanguage = SUPPORTED_LANGUAGES.includes(language) ? language : DEFAULT_LANGUAGE;
 
   if (persist) {
     try {
@@ -1530,7 +1532,7 @@ const initLanguage = () => {
     stored = null;
   }
 
-  setLanguage(stored && translations[stored] ? stored : "en", false);
+  setLanguage(stored && SUPPORTED_LANGUAGES.includes(stored) ? stored : DEFAULT_LANGUAGE, false);
 
   document.querySelectorAll("[data-lang]").forEach((button) => {
     button.addEventListener("click", () => setLanguage(button.dataset.lang));
